@@ -1,1 +1,7 @@
-
+### File Descriptions ### 
+##### microbench_loads.cu : kernel to generate different access patterns of loads to shared memory banks. The kernel takes in average no. of bank conflicts per warp as a parameter. 
+##### microbench_stores.cu : kernel to generate different access patterns of stores to shared memory banks. The kernel requires a sequence of store followed by load, as the timing of store cannot be captured by clock64()
+##### modelgen_loads.cpp : Iterates through all possible combinations of no. of threads and conflicts to generate the operational model for loads. This is currently for a single block of threads on a single SM.
+##### modelgen_stores.cpp : Iterates through all possible combinations of no. of threads and conflicts to generate the operational model for stores. This is currently for a single block of threads on a single SM.
+##### validate_loads.pp : Retrieves S(average service time) from the model (for loads) based on the values of performance counters that are profiled on the microbenchmark. Also captures the measured time of the microbenchmark and outputs both measured and modeled time to a csv file for further analysis.
+##### validate_stores.pp : Retrieves S(average service time) from the model (for stores) based on the values of performance counters that are profiled on the microbenchmark. Also captures the measured time of the microbenchmark and outputs both measured and modeled time to a csv file for further analysis.
